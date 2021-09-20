@@ -6,18 +6,21 @@ import Main from "../../components/Main";
 import AdBar from "../../components/AdBar";
 import BottomBar from "../../components/BottomBar";
 import { Api } from "../api/book";
+import { useRouter } from 'next/router'
 
 const book = () => {
 
-  const [states, setStates] = useState({search: "", books: [] });
+  const [states, setStates] = useState({book: [] });
+  const router = useRouter()
+  const { id } = router.query;
 
   const update = () => {
 
   }
 
   useEffect(async()=>{
-    const books = await Api.get('https://datamax-api.herokuapp.com/api/');
-    setStates({ books: books });
+    const book = await Api.get(`v1/books/${id}`);
+    setStates({ book: book.data });
   }, []);
 
   return (
@@ -37,6 +40,10 @@ const book = () => {
               onChange={(e) => setStates({...states, search: e.target.value})} 
             />
           </div>
+
+            <button className="button-update" onClick={() => update()}>
+                Update Book
+            </button>
         </Main>
 
         <AdBar />
@@ -49,4 +56,4 @@ const book = () => {
   );
 }
 
-export { book }
+export default book;
