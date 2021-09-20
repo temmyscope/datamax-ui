@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import LeftSideBar from "../components/LeftSideBar";
-import NavBar from "../components/NavBar";
+import LeftSideBar from "../../components/LeftSideBar";
+import NavBar from "../../components/NavBar";
 import SeoHead from "../components/SeoHead";
-import Main from "../components/Main";
-import AdBar from "../components/AdBar";
-import BottomBar from "../components/BottomBar";
+import Main from "../../components/Main";
+import AdBar from "../../components/AdBar";
+import BottomBar from "../../components/BottomBar";
 import { Api } from "./api/book";
-//import Footer from "../components/Footer";
 
 const book = () => {
 

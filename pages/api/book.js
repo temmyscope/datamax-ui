@@ -4,9 +4,7 @@ const sendRequest = async(params) => {
     const options = {
       method: method.toUpperCase(),
       headers: {
-        'Accept': 'application/json', 
-        'Content-Type': 'application/json',
-        "timeout": 5000
+        'Accept': 'application/json',
       },
       body: JSON.stringify(requestData)
     };

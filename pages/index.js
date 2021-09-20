@@ -6,7 +6,6 @@ import Main from "../components/Main";
 import AdBar from "../components/AdBar";
 import BottomBar from "../components/BottomBar";
 import { Api } from "./api/book";
-//import Footer from "../components/Footer";
 
 export default function Index() {
 
@@ -17,7 +16,7 @@ export default function Index() {
   }
 
   useEffect(async()=>{
-    const books = await Api.get('/external-books');
+    const books = await Api.get('external-books');
     console.log(books);
     setBooks(books);
   }, []);
@@ -34,11 +33,12 @@ export default function Index() {
         <LeftSideBar />
 
         <Main>
-          <div className="capitalize w-full font-bold">
+          <div className="flex justify-center flex-col capitalize w-full font-bold">
             List Of Ten Books
           </div>
 
           <br className="h-5" />
+
           <hr className="w-full" />
 
           <div>
