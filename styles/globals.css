@@ -1,0 +1,29 @@
+/**
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+**/
+.main {
+  @apply flex;
+}
+.ad-bar {
+  width: 29%;
+}
+.left-side-bar {
+  width: 19%;
+}
+.main-center{
+  width: 52%;
+  @apply main justify-center;
+}
+.nav-bar {
+  height: 60px;
+  box-shadow: 0px 2px 4px rgba(97, 97, 97, 0.18), 0px 4px 8px rgba(97, 97, 97, 0.18);
+  border-radius: 0px 0px 10px 10px;
+  @apply flex justify-between items-center;
+}
+.avatar {
+  border-radius: 50%;
+  @apply h-10 w-10 bg-gray-500 text-white text-center flex items-center justify-center ; 
+}
+@import './mobile.css';
