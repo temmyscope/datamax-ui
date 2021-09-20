@@ -16,7 +16,7 @@ const sendRequest = async(params) => {
     .catch(err => console.error('error:' + err));
 }
 
-Api = {
+const Api = {
   
   post: async(endpoint, requestData) => await sendRequest({ endpoint, method: 'POST', requestData}),
 
@@ -28,6 +28,5 @@ Api = {
 
   patch: async(endpoint, requestData) => await sendRequest({ endpoint, method: 'PATCH', requestData}),
 }
-export default function books(req, res) {
 
-}
+export { Api }

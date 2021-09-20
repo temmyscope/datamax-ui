@@ -5,18 +5,21 @@ import SeoHead from "../components/SeoHead";
 import Main from "../components/Main";
 import AdBar from "../components/AdBar";
 import BottomBar from "../components/BottomBar";
+import { Api } from "./api/book";
 //import Footer from "../components/Footer";
 
 export default function Index() {
 
-  const [states, setStates] = useState({search: ""});
+  const [books, setBooks] = useState([]);
 
   const remove = () => {
 
   }
 
-  useEffect(()=>{
-    
+  useEffect(async()=>{
+    const books = await Api.get('/external-books');
+    console.log(books);
+    setBooks(books);
   }, []);
 
   return (
@@ -31,14 +34,39 @@ export default function Index() {
         <LeftSideBar />
 
         <Main>
-          <div>
-            <input className="" value={states.search} 
-              onChange={(e) => setStates({...states, search: e.target.value})} 
-            />
+          <div className="capitalize w-full font-bold">
+            List Of Ten Books
           </div>
 
-          <div>
+          <br className="h-5" />
+          <hr className="w-full" />
 
+          <div>
+          {
+            (books.length === 0) ?
+            <p>No books are currently available</p>
+            :
+            books.map((book, index) => (
+              <div className="book-card">
+                <div className="text-center space-y-2 sm:text-center">
+                  <p className="text-lg text-black font-semibold">
+                    {book.name}
+                  </p>
+                  <p className="text-gray-500 font-medium">
+                    {book.authors.join(', ').trim()}
+                  </p>
+                </div>
+                <button className="button-remove">
+                  Remove
+                </button>
+                <Link>
+                  <a href={`/book/{book.id}`} className="button-update">
+                  Update
+                  </a>
+                </Link>
+              </div>
+            ))
+          }
           </div>
         </Main>
 
