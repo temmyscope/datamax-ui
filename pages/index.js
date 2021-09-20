@@ -18,7 +18,7 @@ export default function Index() {
   useEffect(async()=>{
     const books = await Api.get('external-books');
     console.log(books);
-    setBooks(books);
+    setBooks(books.data);
   }, []);
 
   return (
@@ -33,15 +33,13 @@ export default function Index() {
         <LeftSideBar />
 
         <Main>
-          <div className="flex justify-center flex-col capitalize w-full font-bold">
+          <div className="flex justify-center flex- capitalize w-full font-bold">
             List Of Ten Books
           </div>
 
-          <br className="h-5" />
+          <hr className="w-full bg-black m-4" />
 
-          <hr className="w-full" />
-
-          <div>
+          <div className="flex justify-center flex- capitalize w-full font-bold">
           {
             (books.length === 0) ?
             <p>No books are currently available</p>

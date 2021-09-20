@@ -10,7 +10,7 @@ const NavBar = ({}) => {
 
         <div style={{ marginRight:'5%' }}>
           <div className="avatar">
-            J
+            DM
           </div>
         </div>
       </header>

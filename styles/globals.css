@@ -14,13 +14,13 @@
 }
 .main-center{
   width: 52%;
-  @apply main justify-center;
+  @apply main justify-center flex-col;
 }
 .nav-bar {
   height: 60px;
   box-shadow: 0px 2px 4px rgba(97, 97, 97, 0.18), 0px 4px 8px rgba(97, 97, 97, 0.18);
   border-radius: 0px 0px 10px 10px;
-  @apply flex justify-between items-center;
+  @apply flex justify-between items-center flex-row;
 }
 .avatar {
   border-radius: 50%;
