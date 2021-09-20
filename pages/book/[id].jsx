@@ -5,7 +5,7 @@ import SeoHead from "../../components/SeoHead";
 import Main from "../../components/Main";
 import AdBar from "../../components/AdBar";
 import BottomBar from "../../components/BottomBar";
-import { Api } from "./api/book";
+import { Api } from "../api/book";
 
 const book = () => {
 
