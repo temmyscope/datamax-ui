@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LeftSideBar from "../components/LeftSideBar";
 import NavBar from "../components/NavBar";
 import SeoHead from "../components/SeoHead";
@@ -8,6 +8,8 @@ import BottomBar from "../components/BottomBar";
 //import Footer from "../components/Footer";
 
 export default function Index() {
+
+  const [states, setStates] = useState({search: ""});
 
   return (
     <React.Fragment>
@@ -21,7 +23,11 @@ export default function Index() {
         <LeftSideBar />
 
         <Main>
-          first text
+          <div>
+            <input className="" value={states.search} 
+              onChange={(e) => setStates({...states, search: e.target.value})} 
+            />
+          </div>
         </Main>
 
         <AdBar />
