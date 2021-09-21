@@ -6,18 +6,22 @@ import Main from "../components/Main";
 import AdBar from "../components/AdBar";
 import BottomBar from "../components/BottomBar";
 import { Api } from "./api/book";
+import Link from "next/link";
 
 export default function Index() {
 
   const [books, setBooks] = useState([]);
+  const [exemptedIndex, setIndex] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const remove = () => {
-
+  const remove = (index) => {
+    setLoading(true);
+    setIndex([...exemptedIndex, index]);
+    setLoading(false);
   }
 
   useEffect(async()=>{
     const books = await Api.get('external-books');
-    console.log(books);
     setBooks(books.data);
   }, []);
 
@@ -39,29 +43,35 @@ export default function Index() {
 
           <hr className="w-full bg-black m-4" />
 
-          <div className="flex justify-center flex- capitalize w-full font-bold">
+          <div className="flex justify-center flex-col items-center">
           {
             (books.length === 0) ?
             <p>No books are currently available</p>
             :
             books.map((book, index) => (
-              <div className="book-card">
-                <div className="text-center space-y-2 sm:text-center">
-                  <p className="text-lg text-black font-semibold">
-                    {book.name}
-                  </p>
-                  <p className="text-gray-500 font-medium">
-                    {book.authors.join(', ').trim()}
-                  </p>
+              exemptedIndex.includes(index)?
+              <></> :
+              <div className="card-book m-2 w-2/3" key={index}>
+                <p className="text-lg text-black font-semibold">
+                  {book.name}
+                </p>
+                <p className="text-gray-500 font-medium">
+                  {book.authors.join(', ').trim()}
+                </p>
+                <div className="flex justify-evenly w-full">
+                  {(loading === false)?
+                  <button className="remove-button" onClick={(e) => remove(index)}>
+                    Remove
+                  </button>
+                  :
+                  <span>loading...</span>
+                  }
+                  <Link href={`/book?name=${book.name}`}>
+                    <a className="update-button">
+                    Update
+                    </a>
+                  </Link>
                 </div>
-                <button className="button-remove">
-                  Remove
-                </button>
-                <Link>
-                  <a href={`/book/{book.id}`} className="button-update">
-                  Update
-                  </a>
-                </Link>
               </div>
             ))
           }

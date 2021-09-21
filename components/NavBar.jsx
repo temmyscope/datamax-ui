@@ -5,7 +5,7 @@ const NavBar = ({}) => {
     return(
       <header className="nav-bar">
         <div style={{ marginLeft:'5%' }}>
-          Logo
+          DataMax Assessment
         </div>
 
         <div style={{ marginRight:'5%' }}>
